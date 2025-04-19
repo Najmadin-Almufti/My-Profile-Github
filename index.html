@@ -4,62 +4,319 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Najmadin Almufti</title>
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: #003366;
+      display: flex;
+      justify-content: center;
+      padding: 15px 0;
+      z-index: 999;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 40px;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav li a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      padding: 10px 15px;
+      transition: 0.3s;
+    }
+
+    nav li a:hover {
+      background-color: #0055a5;
+      border-radius: 5px;
+    }
+
+    header {
+      text-align: center;
+      padding: 100px 20px 30px;
+      background: url('https://via.placeholder.com/1500') no-repeat center center/cover;
+      color: white;
+      background-attachment: fixed;
+    }
+
+    .hero-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .hero-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-info img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid white;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 80px;
+      margin: 0;
+      color: navy;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+      animation: popIn 1.2s ease-out forwards;
+      opacity: 0;
+    }
+
+    header p {
+      font-size: 20px;
+      margin-top: 20px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.9;
+      animation: fadeInUp 1.6s ease-out;
+      color: black; /* Updated color */
+    }
+
+    .explore-btn {
+      display: inline-block;
+      margin-top: 40px;
+      background-color: #0055a5;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 18px;
+      transition: background-color 0.3s ease;
+      animation: fadeInUp 2s ease-out;
+    }
+
+    .explore-btn:hover {
+      background-color: #003366;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes popIn {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    #about h2,
+    #projects h2,
+    #contact h2 {
+      color: #003366;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    #about p {
+      max-width: 800px;
+      margin: auto;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .projects-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .project-card {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 280px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-card h3 {
+      color: #003366;
+      font-size: 24px;
+    }
+
+    .project-card p {
+      font-size: 16px;
+    }
+
+    #contact form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    #contact input,
+    #contact textarea {
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    #contact button {
+      background-color: #0055a5;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #contact button:hover {
+      background-color: #003366;
+    }
+
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 50px;
+      }
+
+      .projects-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
+
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
   <header id="home">
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="hero">
-      <h1>Najmadin Almufti</h1>
-      <p>A driven and curious mind exploring the intersection of technology, creativity, and human impact.</p>
+    <div class="hero-container">
+      <div class="hero-info">
+        <img src="naja.jpg.jpeg" alt="Najmadin Almufti">
+        <h1>Najmadin Almufti</h1>
+        <p>A driven and curious mind exploring the intersection of technology, creativity, and human impact.</p>
+      </div>
     </div>
   </header>
+
+  <div style="text-align: center;">
+    <a href="#projects" class="explore-btn">Explore My Work</a>
+  </div>
 
   <section id="about">
     <h2>About Me</h2>
     <p>
-      I am passionate about building meaningful experiences through technology.
-      With a strong foundation in web development, I love bringing ideas to life through clean code and thoughtful design.
+      I am a Software Engineering student at the University of Kurdistan Hewlêr, with a strong proficiency in C++, JavaScript, HTML, and CSS. I am passionate about developing innovative and user-centric web applications. Committed to continuous learning and growth, I strive to expand my technical expertise and contribute meaningfully to the field of software development.
     </p>
   </section>
 
   <section id="projects">
     <h2>Projects</h2>
-    <div class="project">
-      <h3>Project One</h3>
-      <p>A web app that helps users manage tasks efficiently.</p>
-    </div>
-    <div class="project">
-      <h3>Project Two</h3>
-      <p>A responsive website designed for a local business.</p>
-    </div>
-    <div class="project">
-      <h3>Project Three</h3>
-      <p>A personal blog platform built using HTML, CSS, and JavaScript.</p>
+    <div class="projects-container">
+      <div class="project-card">
+        <h3>System Analysis</h3>
+        <p>An application that sets events and finding venues for organizers.</p>
+      </div>
+      <div class="project-card">
+        <h3>Task Manager</h3>
+        <p>A web app for managing daily tasks and to-do lists with priority and deadlines.</p>
+      </div>
+      <div class="project-card">
+        <h3>Virtual Study Group</h3>
+        <p>A platform for students to connect, share resources, and collaborate on study sessions.</p>
+      </div>
     </div>
   </section>
 
   <section id="contact">
     <h2>Contact Me</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea placeholder="Your Message" required></textarea>
+    <form action="https://formsubmit.co/najmadin.7788@gmail.com" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="New message from your portfolio site!">
       <button type="submit">Send</button>
     </form>
+  
+    <div class="personal-info" style="margin-top: 50px;">
+      <h3 style="color: #003366; font-size: 26px; margin-bottom: 20px;">Personal Information</h3>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; font-size: 18px;">
+        <div><strong>📧 Email:</strong> <a href="mailto:najmadin.7788@gmail.com">najmadin.7788@gmail.com</a></div>
+        <div><strong📍 Location:</strong> Erbil, Kurdistan Region</div>
+        <div><strong>🎓 University:</strong> University of Kurdistan Hewlêr (UKH)</div>
+        <div><strong>💻 Major:</strong> Software Engineering</div>
+        <div><strong>📷 Instagram:</strong> <a href="https://instagram.com/naja.mufti" target="_blank">@naja.mufti</a></div>
+        <div><strong>🐙 GitHub:</strong> <a href="https://github.com/najmadin" target="_blank">github.com/najmadin</a></div>
+      </div>
+    </div>
+    
   </section>
 
-  <footer>
-    <p>&copy; 2025 Najmadin Almufti. All rights reserved.</p>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
